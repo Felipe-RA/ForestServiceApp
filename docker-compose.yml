@@ -20,7 +20,8 @@ services:
       - fastapi
 
   db:
-    image: postgres:latest
+    image: postgres:15
+    # latest supported version with at least one year of maturity as of 18/11/2023. https://www.postgresql.org/support/versioning/
     volumes:
       - postgres_data:/var/lib/postgresql/data
     environment:
@@ -29,4 +30,5 @@ services:
       POSTGRES_DB: ${POSTGRES_DB}
 
 volumes:
-  postgres_data:
+    - postgres_data:/var/lib/postgresql/data
+    - ./backend/sql:/docker-entrypoint-initdb.d

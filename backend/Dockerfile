@@ -1,5 +1,6 @@
-FROM python:3.12
+FROM python:3.11
 # latest stable version of python as 18/11/2023 https://devguide.python.org/versions/#versions
+# which is explicitly compatible with fastapi  and over 65.3% of the 360 popular packages https://pyreadiness.org/3.11/
 
 WORKDIR /app
 
