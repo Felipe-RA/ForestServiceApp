@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  fastapi:
+    build: ./backend
+    volumes:
+      - ./backend:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+
+  nextjs:
+    build: ./frontend
+    volumes:
+      - ./frontend:/app
+    ports:
+      - "9000:3000"
+    depends_on:
+      - fastapi
+
+  db:
+    image: postgres:latest
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+
+volumes:
+  postgres_data:
