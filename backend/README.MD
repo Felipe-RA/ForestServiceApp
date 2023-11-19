@@ -20,8 +20,19 @@ IN contrast, `ORMs`, while being excellent tools:
 
 - ON our specific case, we do not benefit from the database agnosticism offered by `ORMs`
 
-- We do not see our DB schema evolving regularly, due to the static nature of our source data. Thus, the automatic migrations are not essential.  
+- We do not see our DB schema evolving regularly, due to the static nature of our source data. Thus, the automatic migrations are not essential. But we were asked to make the code easily extendable by other people, so we will config `Alembic`!
 
-One key aspect on which `ORMs` win over direct SQL SCripts is with the **Code Maintainability and Readability**; ORMs allow you to work with database objects in a way that's consistent with the rest of your codebase, which  make the code more maintainable and readable.  
+One key aspect on which `ORMs` win over direct SQL Scripts is with the **Code Maintainability and Readability**; ORMs allow you to work with database objects in a way that's consistent with the rest of your codebase, which  make the code more maintainable and readable.  
 
-Nonetheless, we decided to use direct sql scripts this time.
+<br>
+<br>
+
+## Our veredict
+
+<br>
+
+---
+
+<br>
+
+We will use `sql` scripts for the initialization of the database inside our dockerized app, **then** we will model the common operations with `ORMs`, specifically `SQLAlchemy` 
