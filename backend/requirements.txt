@@ -1,4 +1,7 @@
 fastapi==0.104.1
 uvicorn[standard]==0.24.0
+sqlalchemy
+alembic
 pytest
+pytest-cov
 httpx
