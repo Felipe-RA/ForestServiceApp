@@ -1,8 +1,8 @@
 FROM node:20 
 # 20 is the latest LTS version of node as of 18/11/2023.  https://endoflife.date/nodejs
 
-# Set the working directory to /app/next-pages
-WORKDIR /app/next-pages
+# Set the working directory to /app
+WORKDIR /app
 
 # Copy the package.json (and package-lock.json) to /app/next-pages
 COPY next-pages/package*.json ./
