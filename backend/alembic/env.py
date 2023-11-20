@@ -20,14 +20,23 @@ if config.config_file_name is not None:
 # for 'autogenerate' support
 # from myapp import mymodel
 # target_metadata = mymodel.Base.metadata
-target_metadata = None
+
+from app.models.base import Base  # Import the Base metadata object from your SQLAlchemy models
+
+target_metadata = Base.metadata
+
 
 # other values from the config, defined by the needs of env.py,
 # can be acquired:
 # my_important_option = config.get_main_option("my_important_option")
 # ... etc.
 
-config.set_main_option('sqlalchemy.url', os.getenv('DATABASE_URL'))
+
+db_url = os.getenv('DATABASE_URL')
+if db_url is None:
+    raise ValueError("DATABASE_URL environment variable not set")
+
+config.set_main_option('sqlalchemy.url', db_url)
 
 
 def run_migrations_offline() -> None:
