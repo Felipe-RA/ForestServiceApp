@@ -2,4 +2,4 @@
 .env.local
 __pycache__/
 activate.sh
-felipe-ra-fellowship*
+google_cloud_keyfile*
