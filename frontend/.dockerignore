@@ -1,0 +1,23 @@
+# Node modules
+node_modules/
+
+# Next.js build output
+.next/
+
+# Development config files
+.env.local
+.env.development.local
+
+# OS files
+.DS_Store
+
+# Version control
+.git/
+.gitignore
+
+# Editor directories
+.vscode/
+.idea/
+
+# npm log
+npm-debug.log*
