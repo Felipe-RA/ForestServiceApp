@@ -1,6 +1,6 @@
 from fastapi import APIRouter, HTTPException, Depends
 from sqlalchemy.orm import Session
-from ..models import saved_query as models
+from .. import crud
 from ..schemas import saved_query as schemas
 from ..dependencies import get_db
 
@@ -17,11 +17,9 @@ def create_query(query: schemas.SavedQueryCreate, db: Session = Depends(get_db))
 
     Returns a `SavedQuery` object after creating it in the database.
     """
-    db_query = models.SavedQuery(**query.dict())
-    db.add(db_query)
-    db.commit()
-    db.refresh(db_query)
-    return db_query
+
+    return crud.create_saved_query(db=db, query=query)
+
 
 @router.get("/queries/{id}", response_model=schemas.SavedQuery, summary="Retrieve a specific saved query")
 def get_query(id: int, db: Session = Depends(get_db)):
@@ -34,10 +32,13 @@ def get_query(id: int, db: Session = Depends(get_db)):
 
     Returns the `SavedQuery` object if found, else raises a 404 error.
     """
-    db_query = db.query(models.SavedQuery).filter(models.SavedQuery.id == id).first()
+
+    db_query = crud.get_saved_query(db=db, query_id=id)
+
     if db_query is None:
         raise HTTPException(status_code=404, detail="Query not found")
     return db_query
+
 
 @router.get("/users/{username}/queries", response_model=list[schemas.SavedQuery], summary="Retrieve all queries saved by a user")
 def get_queries_by_user(username: str, db: Session = Depends(get_db)):
@@ -50,5 +51,5 @@ def get_queries_by_user(username: str, db: Session = Depends(get_db)):
 
     Returns a list of `SavedQuery` objects.
     """
-    queries = db.query(models.SavedQuery).filter(models.SavedQuery.username == username).all()
-    return queries
+
+    return crud.get_user_saved_queries(db=db, username=username)
