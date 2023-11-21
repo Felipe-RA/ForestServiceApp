@@ -1,5 +1,6 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, Session
+from google.cloud import bigquery
 import os
 
 # dependencies.py contains the SQLAlchemy setup for database interactions.
@@ -31,3 +32,9 @@ def get_db() -> Session:
         yield db
     finally:
         db.close()
+
+def get_bigquery_client() -> bigquery.Client:
+    """
+    Dependency that creates a Bigquery session
+    """
+    return bigquery.Client()
