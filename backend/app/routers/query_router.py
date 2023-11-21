@@ -1,5 +1,6 @@
+from fastapi import APIRouter, Depends
 from google.cloud import bigquery
-from fastapi import APIRouter
+from app.dependencies import get_bigquery_client
 
 router = APIRouter()
 
@@ -9,7 +10,7 @@ bigquery_client = bigquery.Client()
 
 
 @router.get("/run_query")
-def run_query():
+def run_query(bigquery_client: bigquery.Client = Depends(get_bigquery_client)):
 
     """
     Runs a query to GCloud bigquery. This function is just a test and shall be deprecated in favor
