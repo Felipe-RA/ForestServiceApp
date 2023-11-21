@@ -1,0 +1,9 @@
+# .coveragerc
+[run]
+omit =
+    */tests/*
+    */app/config.py
+    */app/__init__.py
+    */__init__.py
+    */app/models/base.py
+    */alembic/*
