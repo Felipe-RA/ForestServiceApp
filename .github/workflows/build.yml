@@ -85,5 +85,8 @@ jobs:
             -Dsonar.tests=next-pages/__tests__
             -Dsonar.test.inclusions=**/*.test.tsx,**/*.test.ts
             -Dsonar.javascript.lcov.reportPaths=next-pages/coverage/lcov.info
+            -Dsonar.projectKey=felipe-ra_ForestServiceApp-frontend
+            -Dsonar.organization=felipe-ra
+            
           with:
           projectBaseDir: frontend/
