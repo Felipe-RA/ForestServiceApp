@@ -78,15 +78,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN_FRONTEND }}
           SONAR_PROJECT_KEY: felipe-ra_ForestServiceApp-frontend
-          SONAR_ORG: felipe-ra
-          SONAR_SCANNER_OPTS: >
-            -Dsonar.sources=next-pages/app
-            -Dsonar.exclusions=**/node_modules/**,**/*.test.tsx,**/*.test.ts
-            -Dsonar.tests=next-pages/__tests__
-            -Dsonar.test.inclusions=**/*.test.tsx,**/*.test.ts
-            -Dsonar.javascript.lcov.reportPaths=next-pages/coverage/lcov.info
-            -Dsonar.projectKey=felipe-ra_ForestServiceApp-frontend
-            -Dsonar.organization=felipe-ra
-            
+          SONAR_ORG: felipe-ra            
           with:
           projectBaseDir: frontend/
