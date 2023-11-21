@@ -71,7 +71,7 @@ jobs:
       - name: Run tests and generate coverage report
         run: |
           cd frontend/next-pages
-          npm run test -- --coverage
+          npm run test --coverage
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
