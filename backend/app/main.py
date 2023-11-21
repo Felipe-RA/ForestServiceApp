@@ -1,38 +1,17 @@
-from google.cloud import bigquery
 from fastapi import FastAPI
+from .routers import query_router, user_router, stored_queries_router
+
+# main.py is the entry point of the FastAPI application.
 
 app = FastAPI()
 
-# Initialize the BigQuery client
-bigquery_client = bigquery.Client()
-
+# A root endpoint to confirm that the backend is operational.
 @app.get("/")
 def read_root():
-    return {"Hello": "World"}
+    return {"Backend is WORKING": "FINE"}
 
-
-@app.get("/run_query")
-def run_query():
-
-    # Example query to access the USForestServiceInventory bigquery DB
-    query = """
-    SELECT
-        tree_inventory_year,
-        tree_state_code,
-        tree_status_code,
-        species_common_name,
-        species_scientific_name,
-        net_cubicfoot_volume
-    FROM
-        `bigquery-public-data.usfs_fia.tree` 
-    LIMIT
-        100
-    """
-
-
-    query_job = bigquery_client.query(query)
-    results = query_job.result()  # Waits for the query to finish
-
-
-    # Convert the results to a list of dictionaries to return as JSON
-    return [dict(row) for row in results]
+# Include the routers from the routers module.
+# These routers handle different API endpoints related to queries, users, and saved queries.
+app.include_router(query_router.router)
+app.include_router(user_router.router, prefix="/users", tags=["users"])
+app.include_router(stored_queries_router.router, prefix="/queries", tags=["queries"])
