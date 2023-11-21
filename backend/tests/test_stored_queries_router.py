@@ -3,10 +3,10 @@ from unittest.mock import patch
 from sqlalchemy.orm import Session
 import pytest
 
-# Import your FastAPI app
+# Import  FastAPI app
 from app.main import app
 
-# Setup TestClient for your FastAPI app
+# Setup TestClient for  FastAPI app
 client = TestClient(app)
 
 # Sample saved query data for testing
