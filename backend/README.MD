@@ -97,5 +97,5 @@ One key aspect on which `ORMs` win over direct SQL Scripts is with the **Code Ma
 
 <br>
 
-We will use `sql` scripts for the initialization of the database inside our dockerized app, **then** we will model the common operations with `ORMs`, specifically `SQLAlchemy`.
+We will use `sql` scripts for the initialization of the database inside our dockerized app, **then** we will model the common operations with `ORMs`, specifically `SQLAlchemy`
 
