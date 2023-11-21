@@ -1,0 +1,77 @@
+name: USForestMonoRepo
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'backend/**'
+      - 'frontend/**'
+  pull_request:
+    types: [opened, synchronize, reopened]
+    paths:
+      - 'backend/**'
+      - 'frontend/**'
+
+permissions:
+  contents: read
+  security-events: write
+  pull-requests: read # allows SonarCloud to decorate PRs with analysis results
+
+jobs:
+  backendSonarCloudScan:
+    name: Backend Sonar Scan
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0  
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+      - name: Install dependencies
+        run: |
+          cd backend
+          pip install -r requirements.txt
+      # If you have tests and want coverage:
+      - name: Run tests and generate coverage report
+        run: |
+          cd backend
+          pytest --cov=./ --cov-report=xml
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          secrets: inherit
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        with:
+          projectBaseDir: backend/
+
+  frontendSonarCloudScan:
+    name: Frontend Sonar Scan
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0  
+      - name: Install dependencies
+        run: |
+          cd frontend
+          npm install
+      - name: Build project
+        run: |
+          cd frontend
+          npm run build
+      # If you have tests and want coverage:
+      - name: Run tests and generate coverage report
+        run: |
+          cd frontend
+          npm run test -- --coverage
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          secrets: inherit
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        with:
+          projectBaseDir: frontend/
