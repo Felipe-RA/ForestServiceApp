@@ -64,7 +64,6 @@ Please take a closer look at some of the most relevant files/directories:
 - `backend/app/routers` manages the `routers`, which are responsible for handling the request and responses.
 - `backend/app/main.py` is the entry point of the App, and also lists the *end-points* through the use of `routers`
 
-
 <br>
 
 ## SQL Scripts and ORM
@@ -90,7 +89,7 @@ One key aspect on which `ORMs` win over direct SQL Scripts is with the **Code Ma
 <br>
 <br>
 
-## Our Stretegy
+## Our Strategy
 
 <br>
 
@@ -99,5 +98,4 @@ One key aspect on which `ORMs` win over direct SQL Scripts is with the **Code Ma
 <br>
 
 We will use `sql` scripts for the initialization of the database inside our dockerized app, **then** we will model the common operations with `ORMs`, specifically `SQLAlchemy`.
-
 
