@@ -1,4 +1,5 @@
 name: USForestMonoRepo
+
 on:
   push:
     branches:
@@ -45,9 +46,10 @@ jobs:
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
-          secrets: inherit
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN_BACKEND }}
+          SONAR_PROJECT_KEY: felipe-ra_ForestServiceApp-backend
+          SONAR_ORG: felipe-ra
         with:
           projectBaseDir: backend/
 
@@ -66,7 +68,6 @@ jobs:
         run: |
           cd frontend/next-pages
           npm run build
-      # If you have tests and want coverage:
       - name: Run tests and generate coverage report
         run: |
           cd frontend/next-pages
@@ -74,8 +75,9 @@ jobs:
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
-          secrets: inherit
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN_FRONTEND }}
+          SONAR_PROJECT_KEY: felipe-ra_ForestServiceApp-frontend
+          SONAR_ORG: felipe-ra
         with:
           projectBaseDir: frontend/
