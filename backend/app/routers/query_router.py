@@ -4,11 +4,6 @@ from app.dependencies import get_bigquery_client
 
 router = APIRouter()
 
-
-# Initialize the BigQuery client
-bigquery_client = bigquery.Client()
-
-
 @router.get("/run_query")
 def run_query(bigquery_client: bigquery.Client = Depends(get_bigquery_client)):
 

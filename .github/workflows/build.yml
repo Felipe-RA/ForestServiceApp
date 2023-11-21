@@ -37,6 +37,9 @@ jobs:
         run: |
           cd backend
           pip install -r requirements.txt
+      - name: List backend directory content
+        run: |
+          ls -la backend/
       - name: Run tests and generate coverage report
         run: |
           cd backend
