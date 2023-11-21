@@ -37,5 +37,10 @@
       "next/babel"
     ],
     "plugins": []
+  },
+  "jest": {
+    "collectCoverage": true,
+    "coverageDirectory": "next-pages/coverage",
+    "coverageReporters": ["lcov"]
   }
 }
