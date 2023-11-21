@@ -42,4 +42,4 @@ class SavedQuery(SavedQueryBase):
         This allows the model to be compatible with SQLAlchemy models,
         enabling direct usage of database models in FastAPI responses.
         """
-        orm_mode = True
+        from_attributes = True

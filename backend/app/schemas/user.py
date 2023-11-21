@@ -32,4 +32,4 @@ class User(UserBase):
         Allows the model to be compatible with SQLAlchemy models,
         enabling the direct usage of database models in FastAPI responses.
         """
-        orm_mode = True
+        from_attributes = True

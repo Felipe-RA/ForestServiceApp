@@ -26,7 +26,32 @@ This project is compatible with Github Actions + Sonacloud Analysis, and its con
 
 ![SonarCloud GitHub Action check](images/sonarcloud-action.png)
 
-## Prerequisites
+Here an example of a failed quality gate due to security concerns, nothing escapes our sights!!
+
+![images/failed_quality_gate.png](images/failed_quality_gate.png)
+
+
+## Dockerized app with three services
+
+A Dockerized app is served, 
+
+![images/working_container.png](images/working_container.png)
+
+
+## GitHub Actions for built-in quality badges!
+
+Our CI/CD pipeline is built with GitHub Actions, enabling automated unit testing and code coverage generation on every push and pull request. We've integrated SonarCloud to perform thorough code quality checks, ensuring that code health is maintained throughout the development lifecycle.
+
+![images/quality_badge.png](images/quality_badge.png)
+
+
+## Connecting to Google Cloud BigQuery
+
+We've established a connection to Google Cloud BigQuery by leveraging a service account. The credentials for this account are securely managed and used to authenticate API requests, allowing our backend to interact with BigQuery datasets.
+
+
+
+### Prerequisites
 
 To run this project locally, you need to provide a `google_cloud_keyfile_service_account.json` at the root of your project directory. This file is essential for authenticating with Google Cloud BigQuery and must contain credentials for a service account with the following roles:
 
@@ -54,21 +79,7 @@ The file should look like this (this is a placeholder):
 }
 ```
 
-## CI/CD and Quality Assurance
 
-Our CI/CD pipeline is built with GitHub Actions, enabling automated unit testing and code coverage generation on every push and pull request. We've integrated SonarCloud to perform thorough code quality checks, ensuring that code health is maintained throughout the development lifecycle.
-
-!!! SonarCloud Quality Gate Passed image goes here. Describe it as a badge indicating the successful quality check. !!!
-
-## Connecting to Google Cloud BigQuery
-
-We've established a connection to Google Cloud BigQuery by leveraging a service account. The credentials for this account are securely managed and used to authenticate API requests, allowing our backend to interact with BigQuery datasets.
-
-## Project Planning
-
-Project management and task tracking are handled using **GitHub Projects**. Our project board is publicly available and provides insight into our development process:
-
-- [GitHub Project: Project Direction](https://github.com/users/Felipe-RA/projects/2)
 
 ## Known Improvements to Implement
 
@@ -76,10 +87,9 @@ While we've made significant progress, there's always room for improvement. Here
 
 - **Federated Permissions**: Transitioning from using a key file to federated permissions for the Google Cloud service account would enhance security.
 - **Integration Testing**: Implementing integration tests would ensure our components work together seamlessly.
-- **Frontend Business Functionality**: Due to time constraints and my commitment to completing and defending my Machine Learning research, some frontend features and tests are pending development.
+- **Frontend Business Functionality**: Due to time constraints and the unfortunate timing of having to completing and defende my Machine Learning research, some frontend features and tests are pending development.
 
 Preprint of my Machine Learning research available: [UdeAI Forest Research Preprint](https://github.com/Felipe-RA/udeai_forest/blob/main/preprint.pdf)
 
 ---
 
-We are excited about the potential of this project and look forward to continual improvement and collaboration.
