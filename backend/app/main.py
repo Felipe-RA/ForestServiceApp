@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from .routers import query_router, user_router, stored_queries_router
+from routers import query_router, user_router, stored_queries_router
 
 # main.py is the entry point of the FastAPI application.
 
