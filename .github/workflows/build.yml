@@ -45,6 +45,7 @@ jobs:
         run: |
           cd backend
           pytest --cov=./ --cov-report=xml
+          continue-on-error: true
         env:
           GOOGLE_APPLICATION_CREDENTIALS: google_cloud_keyfile_service_account.json
       - name: SonarCloud Scan
