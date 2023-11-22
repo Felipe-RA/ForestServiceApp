@@ -4,6 +4,20 @@ This project serves as a query interface to the US Forest Service public dataset
 
 The public data from the US Forest Service is  available openly and freely for non commercial purposes at [Google Cloud](https://console.cloud.google.com/marketplace/product/us-forest-service/forest-inventory-analysis).
 
+This project is a `MonoRepo`, you can find separates README.md for the backend and the frontend.
+
+**ABOUT THE DOCKER IMAGES!!!** The images ended up being too heavy for the recommended **GitHub Packages** , we packed them as .tarz to have something to share  [here!!](https://drive.google.com/drive/folders/1beVZo1ZEIB3__5bubKLEmAEqbH7rbzCX?usp=sharing) but we actually recommend that you follow this steps and build them directly (trust me, it will take less than unpacking those .tarz) Nonetheless, we are really sorry about having to result to asking you to build them:
+
+At the root of this repo, please run:
+
+```bash
+docker-compose build
+docker-compose up
+```
+
+We are truly sorry about the incoveniences!!
+
+
 ## Table of Contents
 
 - [Prerequisites](#prerequisites)
